@@ -134,35 +134,6 @@
             content: "Usar Javadoc para documentar clases y métodos públicos."
           }
         ]
-      }
-      // Puedes agregar más lenguajes aquí
-    };
-
-    if (standardsData[language]) {
-      const langData = standardsData[language];
-      reportTitle.textContent = `Estándares de ${langData.name}`;
-      languageIcon.innerHTML = `<i class="${langData.icon}"></i>`;
-
-      let standardsHTML = '';
-      langData.standards.forEach(standard => {
-        standardsHTML += `
-                        <div class="standard-item">
-                            <h3 class="standard-title">${standard.title}</h3>
-                            <p class="standard-content">${standard.content}</p>
-                        </div>
-                    `;
-      });
-
-      reportContent.innerHTML = standardsHTML;
-    } else {
-      reportTitle.textContent = 'Lenguaje no soportado';
-      languageIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
-      reportContent.innerHTML = `
-                    <div class="error-message">
-                        <i class="fas fa-exclamation-circle"></i>
-                        <p>Lo sentimos, los estándares para este lenguaje no están disponibles actualmente.</p>
-                    </div>
-                `;
     }
   });
 </script>

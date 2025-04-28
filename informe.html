@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estándares de Codificación</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <h1><i class="fas fa-code"></i> Estándares de Codificación</h1>
+    <p class="subtitle">Guías de estilo y buenas prácticas para desarrollo de software</p>
+  </header>
+
+  <main class="main-content">
+    <section class="language-selection">
+      <label for="language-select">Selecciona un lenguaje:</label>
+      <select id="language-select" class="language-dropdown">
+        <option value="">-- Elige un lenguaje --</option>
+        <option value="javascript">JavaScript</option>
+        <option value="python">Python</option>
+        <option value="java">Java</option>
+      </select>
+    </section>
+
+    <section class="standards-report">
+      <div class="report-header">
+        <h2 id="report-title">Informe de Estándares</h2>
+        <div id="language-icon" class="language-icon">
+          <i class="fas fa-question-circle"></i>
+        </div>
+      </div>
+
+      <div id="report-content" class="report-content">
+        <div class="placeholder-message">
+          <i class="fas fa-mouse-pointer"></i>
+          <p>Selecciona un lenguaje de programación para ver sus estándares de codificación.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2023 Estándares de Codificación | Desarrollado con <i class="fas fa-heart"></i> para desarrolladores</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('language-select').addEventListener('change', function() {
+    const language = this.value;
+    const reportTitle = document.getElementById('report-title');
+    const languageIcon = document.getElementById('language-icon');
+    const reportContent = document.getElementById('report-content');
+
+    if (!language) {
+      reportTitle.textContent = 'Informe de Estándares';
+      languageIcon.innerHTML = '<i class="fas fa-question-circle"></i>';
+      reportContent.innerHTML = `
+                    <div class="placeholder-message">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Selecciona un lenguaje de programación para ver sus estándares de codificación.</p>
+                    </div>
+                `;
+      return;
+    }
+
+    // Datos de ejemplo para los estándares
+    const standardsData = {
+      javascript: {
+        name: "JavaScript",
+        icon: "fab fa-js",
+        standards: [
+          {
+            title: "Nomenclatura",
+            content: "Usar camelCase para variables y funciones. PascalCase para constructores o clases. CONSTANT_CASE para constantes."
+          },
+          {
+            title: "Indentación",
+            content: "Usar 2 espacios para indentación. Evitar tabs para mantener consistencia."
+          },
+          {
+            title: "Punto y coma",
+            content: "Consistencia en el uso de punto y coma. Preferiblemente usarlos siempre."
+          },
+          {
+            title: "Comillas",
+            content: "Preferir comillas simples ('') para strings, a menos que se necesite interpolación."
+          }
+        ]
+      },
+      python: {
+        name: "Python",
+        icon: "fab fa-python",
+        standards: [
+          {
+            title: "PEP 8",
+            content: "Seguir la guía de estilo PEP 8 para código Python."
+          },
+          {
+            title: "Indentación",
+            content: "Usar 4 espacios por nivel de indentación. Nunca mezclar tabs y espacios."
+          },
+          {
+            title: "Nomenclatura",
+            content: "snake_case para variables y funciones. PascalCase para nombres de clases. UPPER_CASE para constantes."
+          },
+          {
+            title: "Líneas en blanco",
+            content: "Dos líneas en blanco entre funciones y clases. Una línea en blanco entre métodos."
+          }
+        ]
+      },
+      java: {
+        name: "Java",
+        icon: "fab fa-java",
+        standards: [
+          {
+            title: "Convenciones de Oracle",
+            content: "Seguir las convenciones de código de Oracle para Java."
+          },
+          {
+            title: "Nomenclatura",
+            content: "camelCase para variables y métodos. PascalCase para clases e interfaces."
+          },
+          {
+            title: "Indentación",
+            content: "Usar 4 espacios. Alinear llaves con la declaración del método/clase."
+          },
+          {
+            title: "Documentación",
+            content: "Usar Javadoc para documentar clases y métodos públicos."
+          }
+        ]
+      }
+      // Puedes agregar más lenguajes aquí
+    };
+
+    if (standardsData[language]) {
+      const langData = standardsData[language];
+      reportTitle.textContent = `Estándares de ${langData.name}`;
+      languageIcon.innerHTML = `<i class="${langData.icon}"></i>`;
+
+      let standardsHTML = '';
+      langData.standards.forEach(standard => {
+        standardsHTML += `
+                        <div class="standard-item">
+                            <h3 class="standard-title">${standard.title}</h3>
+                            <p class="standard-content">${standard.content}</p>
+                        </div>
+                    `;
+      });
+
+      reportContent.innerHTML = standardsHTML;
+    } else {
+      reportTitle.textContent = 'Lenguaje no soportado';
+      languageIcon.innerHTML = '<i class="fas fa-exclamation-triangle"></i>';
+      reportContent.innerHTML = `
+                    <div class="error-message">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <p>Lo sentimos, los estándares para este lenguaje no están disponibles actualmente.</p>
+                    </div>
+                `;
+    }
+  });
+</script>
+</body>
+</html>

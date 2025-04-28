@@ -1,0 +1,381 @@
+/* Variables de diseño */
+:root {
+  --primary-color: #4361ee;
+  --secondary-color: #3a0ca3;
+  --accent-color: #f72585;
+  --light-color: #f8f9fa;
+  --dark-color: #212529;
+  --text-color: #333;
+  --text-light: #6c757d;
+  --border-color: #dee2e6;
+  --success-color: #4cc9f0;
+  --warning-color: #f8961e;
+  --error-color: #ef233c;
+  --font-main: 'Poppins', sans-serif;
+  --border-radius: 12px;
+  --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Reset y estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-main);
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: #f1f5f9;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.header::after {
+  content: "";
+  position: absolute;
+  bottom: -80px;
+  left: -80px;
+  width: 300px;
+  height: 300px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 50%;
+}
+
+.header-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.header .subtitle {
+  font-weight: 300;
+  opacity: 0.9;
+  font-size: 1.1rem;
+}
+
+.header i {
+  margin-right: 12px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Main content */
+.main-content {
+  padding: 2rem;
+}
+
+/* Language selector */
+.language-selector {
+  margin-bottom: 2.5rem;
+}
+
+.selector-container {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.selector-container label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+  color: var(--dark-color);
+  font-size: 1.1rem;
+}
+
+.selector-container label i {
+  margin-right: 8px;
+  color: var(--primary-color);
+}
+
+.language-dropdown {
+  width: 100%;
+  padding: 1rem 1.5rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  font-family: var(--font-main);
+  background-color: white;
+  cursor: pointer;
+  transition: var(--transition);
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+}
+
+.language-dropdown:hover {
+  border-color: var(--primary-color);
+}
+
+.language-dropdown:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+/* Naming conventions cards */
+.naming-conventions {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.convention-card {
+  background-color: white;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.convention-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: var(--light-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+}
+
+.card-header i {
+  font-size: 1.5rem;
+  margin-right: 1rem;
+  color: var(--primary-color);
+}
+
+.card-header h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--dark-color);
+}
+
+.language-badge {
+  margin-left: auto;
+  padding: 0.35rem 0.75rem;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+/* Placeholder and error messages */
+.placeholder, .error {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--text-light);
+}
+
+.placeholder i, .error i {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ced4da;
+}
+
+.error i {
+  color: var(--error-color);
+}
+
+.error {
+  color: var(--error-color);
+}
+
+/* Convention info */
+.convention-info h3 {
+  color: var(--primary-color);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.convention-info p {
+  margin-bottom: 1.25rem;
+  color: var(--text-color);
+  line-height: 1.7;
+}
+
+.example-box {
+  background-color: var(--light-color);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  border-left: 4px solid var(--primary-color);
+}
+
+.example-title {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.example-box code {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--dark-color);
+  white-space: pre-wrap;
+}
+
+/* Examples section */
+.examples-section {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.examples-title {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+  color: var(--dark-color);
+}
+
+.examples-title i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 2rem;
+}
+
+.code-example {
+  background-color: var(--dark-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.code-example h3 {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  color: white;
+  font-weight: 500;
+}
+
+.code-example pre {
+  margin: 0;
+}
+
+.code-example code {
+  display: block;
+  padding: 1.5rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: #f8f9fa;
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.5;
+  tab-size: 4;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--dark-color);
+  color: white;
+  font-size: 0.9rem;
+}
+
+.footer i {
+  color: var(--accent-color);
+  margin: 0 3px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .header h1 {
+    font-size: 2rem;
+  }
+
+  .naming-conventions {
+    grid-template-columns: 1fr;
+  }
+
+  .examples-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .language-dropdown {
+    padding: 0.8rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header h1 {
+    font-size: 1.75rem;
+  }
+
+  .header .subtitle {
+    font-size: 1rem;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .language-badge {
+    margin-left: 0;
+    margin-top: 0.5rem;
+  }
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.convention-card, .examples-section {
+  animation: fadeIn 0.5s ease-out;
+}

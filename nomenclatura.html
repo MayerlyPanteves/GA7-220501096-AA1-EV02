@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convenciones de Nomenclatura</title>
+  <link rel="stylesheet" href="css/nomenclatura.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <div class="header-content">
+      <h1><i class="fas fa-tags"></i> Convenciones de Nomenclatura</h1>
+      <p class="subtitle">Guía para nombrar variables y constantes en diferentes lenguajes</p>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="language-selector">
+      <div class="selector-container">
+        <label for="language-select"><i class="fas fa-code"></i> Selecciona un lenguaje:</label>
+        <select id="language-select" class="language-dropdown">
+          <option value="">-- Elige un lenguaje --</option>
+          <option value="javascript">JavaScript</option>
+          <option value="python">Python</option>
+          <option value="java">Java</option>
+          <option value="csharp">C#</option>
+          <option value="php">PHP</option>
+          <option value="swift">Swift</option>
+          <option value="kotlin">Kotlin</option>
+          <option value="go">Go</option>
+          <option value="rust">Rust</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="naming-conventions">
+      <div class="convention-card" id="variables-card">
+        <div class="card-header">
+          <i class="fas fa-code-branch"></i>
+          <h2>Variables</h2>
+          <div class="language-badge" id="variables-badge"></div>
+        </div>
+        <div class="card-content" id="variables-content">
+          <div class="placeholder">
+            <i class="fas fa-mouse-pointer"></i>
+            <p>Selecciona un lenguaje para ver las convenciones de nomenclatura</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="convention-card" id="constants-card">
+        <div class="card-header">
+          <i class="fas fa-lock"></i>
+          <h2>Constantes</h2>
+          <div class="language-badge" id="constants-badge"></div>
+        </div>
+        <div class="card-content" id="constants-content">
+          <div class="placeholder">
+            <i class="fas fa-mouse-pointer"></i>
+            <p>Selecciona un lenguaje para ver las convenciones de nomenclatura</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="examples-section" id="examples-section">
+      <!-- Ejemplos se llenarán dinámicamente -->
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2023 Convenciones de Nomenclatura | Buenas prácticas para código limpio y mantenible</p>
+  </footer>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const languageSelect = document.getElementById('language-select');
+
+    // Datos de nomenclatura para diferentes lenguajes
+    const namingConventions = {
+      javascript: {
+        name: "JavaScript",
+        variables: {
+          convention: "camelCase",
+          description: "Los nombres de variables comienzan con letra minúscula y cada palabra subsiguiente comienza con mayúscula.",
+          example: "miVariable, contadorTotal, usuarioActivo"
+        },
+        constants: {
+          convention: "UPPER_CASE",
+          description: "Las constantes se escriben completamente en mayúsculas con palabras separadas por guiones bajos.",
+          example: "MAX_SIZE, DEFAULT_TIMEOUT, PI"
+        }
+      },
+      python: {
+        name: "Python",
+        variables: {
+          convention: "snake_case",
+          description: "Todas las letras en minúscula con palabras separadas por guiones bajos.",
+          example: "mi_variable, contador_total, usuario_activo"
+        },
+        constants: {
+          convention: "UPPER_CASE",
+          description: "Las constantes se escriben completamente en mayúsculas con palabras separadas por guiones bajos.",
+          example: "MAX_SIZE, DEFAULT_TIMEOUT, PI"
+        }
+      },
+      java: {
+        name: "Java",
+        variables: {
+          convention: "camelCase",
+          description: "Los nombres de variables comienzan con letra minúscula y cada palabra subsiguiente comienza con mayúscula.",
+          example: "miVariable, contadorTotal, usuarioActivo"
+        },
+        constants: {
+          convention: "UPPER_CASE",
+          description: "Las constantes se escriben completamente en mayúsculas con palabras separadas por guiones bajos.",
+          example: "MAX_SIZE, DEFAULT_TIMEOUT, PI"
+        }
+      },
+      csharp: {
+        name: "C#",
+        variables: {
+          convention: "camelCase",
+          description: "Los nombres de variables comienzan con letra minúscula y cada palabra subsiguiente comienza con mayúscula.",
+          example: "miVariable, contadorTotal, usuarioActivo"
+        },
+        constants: {
+          convention: "PascalCase",
+          description: "Las constantes usan PascalCase (igual que las clases) en C#.",
+          example: "MaxSize, DefaultTimeout, Pi"
+        }
+      },
+      php: {
+        name: "PHP",
+        variables: {
+          convention: "snake_case o camelCase",
+          description: "Ambos estilos son aceptados, pero snake_case es más tradicional en PHP.",
+          example: "mi_variable o miVariable, contador_total o contadorTotal"
+        },
+        constants: {
+          convention: "UPPER_CASE",
+          description: "Las constantes se escriben completamente en mayúsculas con palabras separadas por guiones bajos.",
+          example: "MAX_SIZE, DEFAULT_TIMEOUT, PI"
+        }
+      },
+      swift: {
+        name: "Swift",
+        variables: {
+          convention: "camelCase",
+          description: "Los nombres de variables comienzan con letra minúscula y cada palabra subsiguiente comienza con mayúscula.",
+          example: "miVariable, contadorTotal, usuarioActivo"
+        },
+        constants: {
+          convention: "camelCase",
+          description: "En Swift, las constantes usan el mismo estilo que las variables pero se declaran con 'let'.",
+          example: "maxSize, defaultTimeout, pi"
+        }
+      },
+      kotlin: {
+        name: "Kotlin",
+        variables: {
+          convention: "camelCase",
+          description: "Los nombres de variables comienzan con letra minúscula y cada palabra subsiguiente comienza con mayúscula.",
+          example: "miVariable, contadorTotal, usuarioActivo"
+        },
+        constants: {
+          convention: "UPPER_CASE o camelCase",
+          description: "Para constantes de nivel superior se usa UPPER_CASE, para propiedades constantes se usa camelCase.",
+          example: "MAX_SIZE o maxSize, DEFAULT_TIMEOUT o defaultTimeout"
+        }
+      },
+      go: {
+        name: "Go",
+        variables: {
+          convention: "camelCase o PascalCase",
+          description: "camelCase para variables no exportadas, PascalCase para variables exportadas.",
+          example: "miVariable (privada), MiVariable (exportada)"
+        },
+        constants: {
+          convention: "camelCase o PascalCase",
+          description: "camelCase para constantes no exportadas, PascalCase para constantes exportadas.",
+          example: "maxSize (privada), MaxSize (exportada)"
+        }
+      },
+      rust: {
+        name: "Rust",
+        variables: {
+          convention: "snake_case",
+          description: "Todas las letras en minúscula con palabras separadas por guiones bajos.",
+          example: "mi_variable, contador_total, usuario_activo"
+        },
+        constants: {
+          convention: "UPPER_CASE",
+          description: "Las constantes se escriben completamente en mayúsculas con palabras separadas por guiones bajos.",
+          example: "MAX_SIZE, DEFAULT_TIMEOUT, PI"
+        }
+      }
+    };
+
+    languageSelect.addEventListener('change', function() {
+      const selectedLanguage = this.value;
+
+      if (!selectedLanguage) {
+        resetDisplay();
+        return;
+      }
+
+      const languageData = namingConventions[selectedLanguage];
+
+      if (!languageData) {
+        showError();
+        return;
+      }
+
+      updateDisplay(languageData, selectedLanguage);
+      showExamples(languageData, selectedLanguage);
+    });
+
+    function resetDisplay() {
+      document.getElementById('variables-content').innerHTML = `
+                    <div class="placeholder">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Selecciona un lenguaje para ver las convenciones de nomenclatura</p>
+                    </div>
+                `;
+
+      document.getElementById('constants-content').innerHTML = `
+                    <div class="placeholder">
+                        <i class="fas fa-mouse-pointer"></i>
+                        <p>Selecciona un lenguaje para ver las convenciones de nomenclatura</p>
+                    </div>
+                `;
+
+      document.getElementById('variables-badge').textContent = '';
+      document.getElementById('constants-badge').textContent = '';
+
+      document.getElementById('examples-section').innerHTML = '';
+    }
+
+    function showError() {
+      document.getElementById('variables-content').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron convenciones para este lenguaje</p>
+                    </div>
+                `;
+
+      document.getElementById('constants-content').innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <p>No se encontraron convenciones para este lenguaje</p>
+                    </div>
+                `;
+    }
+
+    function updateDisplay(languageData, langId) {
+      // Actualizar tarjeta de variables
+      document.getElementById('variables-badge').textContent = languageData.name;
+      document.getElementById('variables-content').innerHTML = `
+                    <div class="convention-info">
+                        <h3>${languageData.variables.convention}</h3>
+                        <p>${languageData.variables.description}</p>
+                        <div class="example-box">
+                            <span class="example-title">Ejemplo:</span>
+                            <code>${languageData.variables.example}</code>
+                        </div>
+                    </div>
+                `;
+
+      // Actualizar tarjeta de constantes
+      document.getElementById('constants-badge').textContent = languageData.name;
+      document.getElementById('constants-content').innerHTML = `
+                    <div class="convention-info">
+                        <h3>${languageData.constants.convention}</h3>
+                        <p>${languageData.constants.description}</p>
+                        <div class="example-box">
+                            <span class="example-title">Ejemplo:</span>
+                            <code>${languageData.constants.example}</code>
+                        </div>
+                    </div>
+                `;
+    }
+
+    function showExamples(languageData, langId) {
+      let examplesHTML = `
+                    <h2 class="examples-title"><i class="fas fa-code"></i> Ejemplos en ${languageData.name}</h2>
+                    <div class="examples-grid">
+                `;
+
+      // Ejemplo de declaración de variables
+      examplesHTML += `
+                    <div class="code-example">
+                        <h3>Variables</h3>
+                        <pre><code>${getVariableExample(langId)}</code></pre>
+                    </div>
+                `;
+
+      // Ejemplo de declaración de constantes
+      examplesHTML += `
+                    <div class="code-example">
+                        <h3>Constantes</h3>
+                        <pre><code>${getConstantExample(langId)}</code></pre>
+                    </div>
+                `;
+
+      examplesHTML += `</div>`;
+
+      document.getElementById('examples-section').innerHTML = examplesHTML;
+    }
+
+    function getVariableExample(lang) {
+      const examples = {
+        javascript: `// Declaración de variables
+let miVariable = "valor";
+const otroValor = 42;
+var contadorTotal = 0;
+
+// Uso
+miVariable = "nuevo valor";
+contadorTotal += 1;`,
+        python: `# Declaración de variables
+mi_variable = "valor"
+contador_total = 0
+usuario_activo = True
+
+# Uso
+mi_variable = "nuevo valor"
+contador_total += 1`,
+        java: `// Declaración de variables
+String miVariable = "valor";
+int contadorTotal = 0;
+boolean usuarioActivo = true;
+
+// Uso
+miVariable = "nuevo valor";
+contadorTotal += 1;`,
+        csharp: `// Declaración de variables
+string miVariable = "valor";
+int contadorTotal = 0;
+bool usuarioActivo = true;
+
+// Uso
+miVariable = "nuevo valor";
+contadorTotal += 1;`,
+        php: `// Declaración de variables
+$mi_variable = "valor";
+$contadorTotal = 0;
+$usuario_activo = true;
+
+// Uso
+$mi_variable = "nuevo valor";
+$contadorTotal += 1;`,
+        swift: `// Declaración de variables
+var miVariable = "valor"
+var contadorTotal = 0
+let maxIntentos = 3
+
+// Uso
+miVariable = "nuevo valor"
+contadorTotal += 1`,
+        kotlin: `// Declaración de variables
+var miVariable = "valor"
+var contadorTotal = 0
+val maxIntentos = 3
+
+// Uso
+miVariable = "nuevo valor"
+contadorTotal += 1`,
+        go: `// Declaración de variables
+miVariable := "valor" // No exportada
+var MiVariable string // Exportada
+contadorTotal := 0
+
+// Uso
+miVariable = "nuevo valor"
+contadorTotal += 1`,
+        rust: `// Declaración de variables
+let mi_variable = "valor";
+let mut contador_total = 0; // mutable
+const MAX_INTENTOS: i32 = 3;
+
+// Uso
+contador_total += 1;`
+      };
+
+      return examples[lang] || "Ejemplo no disponible";
+    }
+
+    function getConstantExample(lang) {
+      const examples = {
+        javascript: `// Constantes en JavaScript
+const MAX_SIZE = 100;
+const DEFAULT_TIMEOUT = 3000;
+const PI = 3.14159;
+
+// Uso
+if (tamaño > MAX_SIZE) {
+    throw new Error("Tamaño excedido");
+}`,
+        python: `# Constantes en Python
+MAX_SIZE = 100
+DEFAULT_TIMEOUT = 3000
+PI = 3.14159
+
+# Uso
+if tamaño > MAX_SIZE:
+    raise ValueError("Tamaño excedido")`,
+        java: `// Constantes en Java
+public static final int MAX_SIZE = 100;
+public static final int DEFAULT_TIMEOUT = 3000;
+public static final double PI = 3.14159;
+
+// Uso
+if (tamaño > MAX_SIZE) {
+    throw new Exception("Tamaño excedido");
+}`,
+        csharp: `// Constantes en C#
+public const int MaxSize = 100;
+public const int DefaultTimeout = 3000;
+public const double Pi = 3.14159;
+
+// Uso
+if (tamaño > MaxSize)
+{
+    throw new Exception("Tamaño excedido");
+}`,
+        php: `// Constantes en PHP
+define('MAX_SIZE', 100);
+define('DEFAULT_TIMEOUT', 3000);
+const PI = 3.14159;
+
+// Uso
+if ($tamaño > MAX_SIZE) {
+    throw new Exception("Tamaño excedido");
+}`,
+        swift: `// Constantes en Swift
+let maxSize = 100
+let defaultTimeout = 3000
+let pi = 3.14159
+
+// Uso
+if tamaño > maxSize {
+    fatalError("Tamaño excedido")
+}`,
+        kotlin: `// Constantes en Kotlin
+const val MAX_SIZE = 100
+val DefaultTimeout = 3000 // Constante de nivel superior
+const val PI = 3.14159
+
+// Uso
+if (tamaño > MAX_SIZE) {
+    throw Exception("Tamaño excedido")
+}`,
+        go: `// Constantes en Go
+const maxSize = 100 // No exportada
+const MaxSize = 100 // Exportada
+const (
+    defaultTimeout = 3000
+    pi = 3.14159
+)
+
+// Uso
+if tamaño > maxSize {
+    panic("Tamaño excedido")
+}`,
+        rust: `// Constantes en Rust
+const MAX_SIZE: i32 = 100;
+const DEFAULT_TIMEOUT: i32 = 3000;
+const PI: f64 = 3.14159;
+
+// Uso
+if tamaño > MAX_SIZE {
+    panic!("Tamaño excedido");
+}`
+      };
+
+      return examples[lang] || "Ejemplo no disponible";
+    }
+  });
+</script>
+</body>
+</html>
